@@ -1,21 +1,34 @@
 /* eslint-disable react/prop-types */
 import "../index.css";
+import { useSelector } from "react-redux";
 
-const BagSummary = ({ bagSummary }) => {
+const BagSummary = () => {
+  const bagSummary = useSelector((state) => state.bagItems);
+
+  const CONVENIENCE_FEES = 99;
+  let totalItem = bagSummary.length;
+  let totalMRP = 0;
+  let totalDiscount = 0;
+
+  bagSummary.forEach((bagItem) => {
+    totalMRP += bagItem.original_price;
+    totalDiscount += bagItem.original_price - bagItem.current_price;
+  });
+
+  let finalPayment = totalMRP - totalDiscount + CONVENIENCE_FEES;
+
   return (
     <div className="bag-summary">
       <div className="bag-details-container">
-        <div className="price-header">
-          PRICE DETAILS ({bagSummary.totalItem} Items){" "}
-        </div>
+        <div className="price-header">PRICE DETAILS ({totalItem} Items) </div>
         <div className="price-item">
           <span className="price-item-tag">Total MRP</span>
-          <span className="price-item-value">₹{bagSummary.totalMRP}</span>
+          <span className="price-item-value">₹{totalMRP}</span>
         </div>
         <div className="price-item">
           <span className="price-item-tag">Discount on MRP</span>
           <span className="price-item-value priceDetail-base-discount">
-            -₹{bagSummary.totalDiscount}
+            -₹{totalDiscount}
           </span>
         </div>
         <div className="price-item">
@@ -25,7 +38,7 @@ const BagSummary = ({ bagSummary }) => {
         <hr />
         <div className="price-footer">
           <span className="price-item-tag">Total Amount</span>
-          <span className="price-item-value">₹{bagSummary.finalPayment}</span>
+          <span className="price-item-value">₹{finalPayment}</span>
         </div>
       </div>
       <button className="btn-place-order">

@@ -1,7 +1,13 @@
 /* eslint-disable react/prop-types */
+import { useDispatch, useSelector } from "react-redux";
 import "../index.css";
+import { bagAction } from "../store/bagSlice";
 
 const HomeItem = ({ item }) => {
+  const dispath = useDispatch();
+  const bagItems = useSelector((state) => state.bagItems);
+  const existInBag = bagItems?.find((bag) => item.id === bag.id);
+
   return (
     <div className="item-container">
       <img className="item-image" src={item.image} alt="item image" />
@@ -15,9 +21,21 @@ const HomeItem = ({ item }) => {
         <span className="original-price">Rs {item.original_price}</span>
         <span className="discount">({item.discount_percentage}% OFF)</span>
       </div>
-      <button className="btn-add-bag" onClick={() => console.log(item)}>
-        Add to Bag
-      </button>
+      {!existInBag ? (
+        <button
+          className="btn btn-add-bag btn-success"
+          onClick={() => dispath(bagAction.addItem(item))}
+        >
+          Add to Bag
+        </button>
+      ) : (
+        <button
+          className="btn btn-add-bag btn-danger"
+          onClick={() => dispath(bagAction.removeItem({ id: item.id }))}
+        >
+          Remove from Bag
+        </button>
+      )}
     </div>
   );
 };
