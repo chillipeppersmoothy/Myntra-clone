@@ -11,7 +11,7 @@ const bagSummary = {
 };
 
 const Bag = () => {
-  const bagItem = useSelector((state) => state.items);
+  const bagItem = useSelector((state) => state.items[0]);
 
   return (
     <div className="bag-page">
