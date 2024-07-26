@@ -6,7 +6,8 @@ import "./index.css";
 import Home from "./routes/Home.jsx";
 import Bag from "./routes/Bag.jsx";
 import { Provider } from "react-redux";
-import store from "./store/index.jsx";
+import store from "./store/index.js";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const router = createBrowserRouter([
   {

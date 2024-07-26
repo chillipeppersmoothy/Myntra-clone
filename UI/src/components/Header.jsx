@@ -1,10 +1,14 @@
 import "../index.css";
-import { IoPerson } from "react-icons/io5";
-import { FaHeartCirclePlus } from "react-icons/fa6";
-import { IoBagCheck } from "react-icons/io5";
+import { IoPersonOutline } from "react-icons/io5";
+import { AiOutlineHeart } from "react-icons/ai";
+import { IoBagOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import { CiSearch } from "react-icons/ci";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const bagItems = useSelector((state) => state.bagItems);
+
   return (
     <header>
       <div className="logo_container">
@@ -27,7 +31,9 @@ const Header = () => {
         </a>
       </nav>
       <div className="search_bar">
-        <span className="material-symbols-outlined search_icon">search</span>
+        <span className="material-symbols-outlined search_icon">
+          <CiSearch />
+        </span>
         <input
           className="search_input"
           placeholder="Search for products, brands and more"
@@ -35,19 +41,21 @@ const Header = () => {
       </div>
       <div className="action_bar">
         <div className="action_container">
-          <IoPerson />
+          <IoPersonOutline />
           <span className="action_name">Profile</span>
         </div>
 
         <div className="action_container">
-          <FaHeartCirclePlus />
+          <AiOutlineHeart />
           <span className="action_name">Wishlist</span>
         </div>
 
-        <Link to="/bag" className="action_container">
-          <IoBagCheck />
+        <Link to="/bag" className="action_container" style={{ color: "black" }}>
+          <IoBagOutline />
           <span className="action_name">Bag</span>
-          <span className="bag-item-count">0</span>
+          <span className="bag-item-count">
+            {bagItems.length > 0 ? bagItems.length : 0}
+          </span>
         </Link>
       </div>
     </header>

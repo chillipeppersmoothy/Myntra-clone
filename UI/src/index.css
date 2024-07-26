@@ -70,6 +70,7 @@ header {
   height: 40px;
   border: 0;
   border-radius: 0 4px 4px 0;
+  outline: none;
 }
 
 .action_bar {
@@ -82,6 +83,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 }
 
 /* Main section */
@@ -193,7 +195,7 @@ header {
 }
 .current-price {
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
   color: #282c3f;
 }
 .original-price {
@@ -238,9 +240,6 @@ header {
 .action_container {
   text-decoration: none;
 }
-a.action_container:link {
-  color: black;
-}
 
 .bag-items-container {
   display: inline-block;
@@ -270,6 +269,17 @@ a.action_container:link {
 
 .bag-details-container {
   margin-bottom: 16px;
+}
+
+.bag-company {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  color: #282c3f;
+  margin-bottom: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .price-header {
@@ -352,7 +362,7 @@ a.action_container:link {
 }
 
 .return-period-days {
-  font-weight: 700;
+  font-weight: 600;
   margin-right: 4px;
 }
 
@@ -377,4 +387,22 @@ a.action_container:link {
   width: 14px;
   height: 14px;
   cursor: pointer;
+}
+
+.loading-container {
+  width: 100%;
+  height: 100% !important;
+  position: fixed;
+  left: 50%;
+  top: 30%;
+}
+
+.no-data {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.no-item-container {
+  margin: 24%;
 }

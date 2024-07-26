@@ -1,25 +1,29 @@
+import { useSelector } from "react-redux";
 import BagItem from "../components/BagItem";
 import BagSummary from "../components/BagSummary";
+import NoItems from "../components/NoItems";
 import "../index.css";
-import { useSelector } from "react-redux";
-
-const bagSummary = {
-  totalItem: 1,
-  totalDiscount: 10,
-  totalMRP: 1000,
-  finalPayment: 900,
-};
 
 const Bag = () => {
-  const bagItem = useSelector((state) => state.items[0]);
+  const bagItems = useSelector((state) => state.bagItems);
 
   return (
-    <div className="bag-page">
-      <div className="bag-items-container">
-        <BagItem bagItem={bagItem} />
-      </div>
-      <BagSummary bagSummary={bagSummary} />
-    </div>
+    <>
+      {bagItems.length > 0 ? (
+        <div className="bag-page">
+          <div className="bag-items-container">
+            {bagItems.map((bagItem) => (
+              <BagItem bagItem={bagItem} key={bagItem.key} />
+            ))}
+          </div>
+          <BagSummary bagSummary />
+        </div>
+      ) : (
+        <div className="no-item-container">
+          <NoItems />
+        </div>
+      )}
+    </>
   );
 };
 
