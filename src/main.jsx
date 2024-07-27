@@ -11,15 +11,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/Myntra-clone/",
     element: <App />,
     children: [
       {
-        path: "/",
+        path: "/Myntra-clone/",
         element: <Home />,
       },
       {
-        path: "/bag",
+        path: "/Myntra-clone/bag",
         element: <Bag />,
       },
     ],
