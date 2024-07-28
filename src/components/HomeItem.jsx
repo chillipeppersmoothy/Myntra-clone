@@ -10,12 +10,12 @@ const HomeItem = ({ item }) => {
 
   return (
     <div className="item-container">
-      <img className="item-image" src={item.image} alt="item image" />
+      <img className="item-image" src={item.image} alt={item.item_name} />
+      <div className="item-name">{item.item_name}</div>
+      <div className="company-name">{item.company}</div>
       <div className="rating">
         {item.rating.stars} ⭐ ({item.rating.count} reviews)
       </div>
-      <div className="company-name">{item.company}</div>
-      <div className="item-name">{item.item_name}</div>
       <div className="price">
         <span className="current-price">Rs {item.current_price}</span>
         <span className="original-price">Rs {item.original_price}</span>
