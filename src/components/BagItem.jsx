@@ -18,9 +18,7 @@ export const BagItem = ({ bagItem }) => {
         <div className="price-container">
           <span className="current-price">Rs {bagItem.current_price}</span>
           <span className="original-price">Rs {bagItem.original_price}</span>
-          <span className="discount-percentage">
-            ({bagItem.discount_percentage}% OFF)
-          </span>
+          <span className="discount">({bagItem.discount_percentage}% OFF)</span>
         </div>
         <div className="return-period">
           <span className="return-period-days">
