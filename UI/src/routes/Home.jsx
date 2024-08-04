@@ -3,11 +3,11 @@ import HomeItem from "../components/HomeItem";
 import "../index.css";
 
 const Home = () => {
-  const homeItems = useSelector((state) => state.items);
+  const state = useSelector((state) => state);
 
   return (
     <div className="items-container">
-      {homeItems.map((homeItem) => (
+      {state?.items?.map((homeItem) => (
         <HomeItem item={homeItem} key={homeItem.id} />
       ))}
     </div>

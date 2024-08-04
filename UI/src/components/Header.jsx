@@ -7,12 +7,12 @@ import { CiSearch } from "react-icons/ci";
 import { useSelector } from "react-redux";
 
 const Header = () => {
-  const bagItems = useSelector((state) => state.bagItems);
+  const state = useSelector((state) => state);
 
   return (
     <header>
       <div className="logo_container">
-        <Link to="/">
+        <Link to="/Myntra-clone/">
           <img
             className="myntra_home"
             src="images/myntra_logo.webp"
@@ -50,11 +50,15 @@ const Header = () => {
           <span className="action_name">Wishlist</span>
         </div>
 
-        <Link to="/bag" className="action_container" style={{ color: "black" }}>
+        <Link
+          to="/Myntra-clone/bag"
+          className="action_container"
+          style={{ color: "black" }}
+        >
           <IoBagOutline />
           <span className="action_name">Bag</span>
           <span className="bag-item-count">
-            {bagItems.length > 0 ? bagItems.length : 0}
+            {state?.bagItems?.length > 0 ? state?.bagItems?.length : 0}
           </span>
         </Link>
       </div>
