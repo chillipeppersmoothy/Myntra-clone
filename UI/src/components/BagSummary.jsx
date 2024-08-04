@@ -6,11 +6,11 @@ const BagSummary = () => {
   const state = useSelector((state) => state);
 
   const CONVENIENCE_FEES = 99;
-  let totalItem = state?.bagSummary?.length;
+  let totalItem = state?.bagItems?.length;
   let totalMRP = 0;
   let totalDiscount = 0;
 
-  state?.bagSummary?.forEach((bagItem) => {
+  state?.bagItems?.forEach((bagItem) => {
     totalMRP += bagItem.original_price;
     totalDiscount += bagItem.original_price - bagItem.current_price;
   });

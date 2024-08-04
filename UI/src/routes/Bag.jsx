@@ -13,7 +13,7 @@ const Bag = () => {
         <div className="bag-page">
           <div className="bag-items-container">
             {state?.bagItems?.map((bagItem) => (
-              <BagItem bagItem={bagItem} key={bagItem.key} />
+              <BagItem bagItem={bagItem} key={bagItem.id} />
             ))}
           </div>
           <BagSummary bagSummary />
