@@ -3,14 +3,14 @@ import "../index.css";
 import { useSelector } from "react-redux";
 
 const BagSummary = () => {
-  const bagSummary = useSelector((state) => state.bagItems);
+  const state = useSelector((state) => state);
 
   const CONVENIENCE_FEES = 99;
-  let totalItem = bagSummary.length;
+  let totalItem = state?.bagSummary?.length;
   let totalMRP = 0;
   let totalDiscount = 0;
 
-  bagSummary.forEach((bagItem) => {
+  state?.bagSummary?.forEach((bagItem) => {
     totalMRP += bagItem.original_price;
     totalDiscount += bagItem.original_price - bagItem.current_price;
   });

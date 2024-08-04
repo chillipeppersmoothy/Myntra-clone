@@ -10,7 +10,11 @@ export const BagItem = ({ bagItem }) => {
   return (
     <div className="bag-item-container">
       <div className="item-left-part">
-        <img className="bag-item-img" src={bagItem.image} />
+        <img
+          className="bag-item-img"
+          src={bagItem.image}
+          alt={bagItem.item_name}
+        />
       </div>
       <div className="item-right-part">
         <div className="bag-company">{bagItem.company}</div>
@@ -38,7 +42,7 @@ export const BagItem = ({ bagItem }) => {
         className="remove-from-cart"
         onClick={() => dispatch(bagAction.removeItem({ id: bagItem.id }))}
       >
-        <RiDeleteBin6Fill />
+        <RiDeleteBin6Fill data-testid="delete-icon" />
       </div>
     </div>
   );
