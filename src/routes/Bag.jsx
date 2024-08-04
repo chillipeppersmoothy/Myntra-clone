@@ -5,15 +5,15 @@ import NoItems from "../components/NoItems";
 import "../index.css";
 
 const Bag = () => {
-  const bagItems = useSelector((state) => state.bagItems);
+  const state = useSelector((state) => state);
 
   return (
     <>
-      {bagItems.length > 0 ? (
+      {state?.bagItems?.length > 0 ? (
         <div className="bag-page">
           <div className="bag-items-container">
-            {bagItems.map((bagItem) => (
-              <BagItem bagItem={bagItem} key={bagItem.key} />
+            {state?.bagItems?.map((bagItem) => (
+              <BagItem bagItem={bagItem} key={bagItem.id} />
             ))}
           </div>
           <BagSummary bagSummary />
